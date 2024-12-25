@@ -25,14 +25,13 @@ public class PlayerControl : MonoBehaviour
         float MoveX = Input.GetAxis("Horizontal");
         float MoveY = Input.GetAxis("Vertical");
 
-        if (!autoAtacking && Input.GetMouseButton(0)) isShooting = true;
+        if (!autoAtacking)
+            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0)) isShooting = true;
+            else isShooting = false;
 
-        float speed = playerRotation.GetInitSpeed();
-
-        if (isShooting) playerRotation.speed = 3 * speed;
-        else playerRotation.speed = speed;
-
-        if (!autoAtacking && Input.GetMouseButtonUp(0)) isShooting = false;
+        float initspeed = playerRotation.GetInitSpeed();
+        if (isShooting) playerRotation.speed = 3 * initspeed;
+        else playerRotation.speed = initspeed;   
 
         Vector3 vMove = new Vector3(MoveX, MoveY);
         Vector3 newPosition = transform.position + (moveSpeed * Time.deltaTime * vMove);
