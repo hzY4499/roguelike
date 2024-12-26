@@ -7,8 +7,6 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float moveSpeed;  // 玩家移动速度
     [SerializeField] private bool isShooting;  // 玩家射击状态
     [SerializeField] private bool autoAtacking;// 是否自动射击
-    [SerializeField] private List<GameObject> walls; // 将墙壁预制体拖入编辑器
-
 
     private float m_nextFire;
     public float FireRate = 0.1f; // 开火速率
@@ -76,41 +74,4 @@ public class PlayerControl : MonoBehaviour
             m_bullet.transform.eulerAngles = new Vector3(0, 0, m_fireAngle);
         }
     }
-    // 碰撞检测
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // 检查是否碰到墙壁
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            // 获取碰撞法线（墙壁的表面方向）
-            Vector2 bounceDirection = collision.contacts[0].normal; // 碰撞法线
-
-            // 计算目标位置
-            Vector2 targetPosition = (Vector2)transform.position + bounceDirection * 0.5f; // 新目标位置
-
-            // 启动协程，实现平滑移动
-            StartCoroutine(SmoothMove(targetPosition, 0.2f)); // 0.2秒内移动完成
-        }
-    }
-
-    // 平滑移动协程 碰撞后平滑移动
-    private IEnumerator SmoothMove(Vector2 targetPosition, float duration)
-    {
-        Vector2 startPosition = transform.position; // 起始位置
-        float elapsedTime = 0f;                     // 已经过的时间
-
-        while (elapsedTime < duration)
-        {
-            // 使用 Lerp 插值进行平滑过渡
-            rb.MovePosition(Vector2.Lerp(startPosition, targetPosition, elapsedTime / duration));
-
-            elapsedTime += Time.deltaTime; // 更新时间
-            yield return null;             // 等待下一帧
-        }
-
-        // 确保移动到最终位置
-        rb.MovePosition(targetPosition);
-    }
-
-
 }
