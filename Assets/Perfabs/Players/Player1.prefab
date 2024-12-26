@@ -120,6 +120,7 @@ MonoBehaviour:
   moveSpeed: 2
   isShooting: 0
   autoAtacking: 0
+  walls: []
   FireRate: 0.1
   Bullet: {fileID: 1657736296376420674, guid: 08019878646dc484a9381bc644669546, type: 3}
   BulletSpeed: 5

@@ -7,7 +7,6 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float moveSpeed;  // 玩家移动速度
     [SerializeField] private bool isShooting;  // 玩家射击状态
     [SerializeField] private bool autoAtacking;// 是否自动射击
-    [SerializeField] private List<GameObject> walls; // 将墙壁预制体拖入编辑器
 
 
     private float m_nextFire;
@@ -111,6 +110,4 @@ public class PlayerControl : MonoBehaviour
         // 确保移动到最终位置
         rb.MovePosition(targetPosition);
     }
-
-
 }
