@@ -65,19 +65,13 @@ public class Enemy_0 : MonoBehaviour
             // 销毁敌人对象
             Destroy(gameObject);
         }
-        // 如果碰撞的对象是子弹，敌人消失
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            // 销毁敌人对象
-            Destroy(gameObject);
-        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 检查碰撞对象是否是墙体
+        // 检查碰撞对象是否是子弹
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            // 销毁子弹
+            // 销毁敌人
             Destroy(gameObject);
         }
     }
