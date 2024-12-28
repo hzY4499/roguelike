@@ -68,10 +68,10 @@ public class Enemy_0 : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // 检查碰撞对象是否是子弹
+        // 检查碰撞对象是否是墙体
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            // 销毁敌人
+            // 销毁子弹
             Destroy(gameObject);
         }
     }
