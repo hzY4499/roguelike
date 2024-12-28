@@ -79,7 +79,7 @@ public class PlayerControl : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 检查是否碰到墙壁
-        if (collision.gameObject.CompareTag("Wall"))
+        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Enemy"))
         {
             // 获取碰撞法线（墙壁的表面方向）
             Vector2 bounceDirection = collision.contacts[0].normal; // 碰撞法线

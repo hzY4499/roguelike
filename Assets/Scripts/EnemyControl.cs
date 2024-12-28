@@ -29,7 +29,7 @@ public class EnemyControl : MonoBehaviour
         while (true) // 无限循环
         {
             // 生成敌人
-            Instantiate(enemy0Prefab, new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(-4.5f, 4.5f), 0), Quaternion.identity);
+            Instantiate(enemy0Prefab);
 
             // 等待指定时间
             yield return new WaitForSeconds(spawnInterval);
