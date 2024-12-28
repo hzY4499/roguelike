@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class Enemy_0 : MonoBehaviour
 {
-    // ÒÆ¶¯ËÙ¶È
+    // ï¿½Æ¶ï¿½ï¿½Ù¶ï¿½
     [SerializeField] private float speed;
 
-    // ±£´æ³õÊ¼×îÔ¶Ç½±Ú·½Ïò
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½Ô¶Ç½ï¿½Ú·ï¿½ï¿½ï¿½
     private Vector3 moveDirection;
     [SerializeField] private ParticleSystem spawnIndicator;
     [SerializeField] private SpriteRenderer enemyRenderer;
     [SerializeField] private ParticleSystem passAwayParticles;
 
-    // Start ÔÚÓÎÏ·¿ªÊ¼Ê±µ÷ÓÃ
+    // Start ï¿½ï¿½ï¿½ï¿½Ï·ï¿½ï¿½Ê¼Ê±ï¿½ï¿½ï¿½ï¿½
     void Start()
     {       
         RandomLocation();
@@ -23,10 +23,10 @@ public class Enemy_0 : MonoBehaviour
             .setOnComplete(SpawnSequenceCompleted);
     }
 
-    // Update Ã¿Ò»Ö¡µ÷ÓÃ
+    // Update Ã¿Ò»Ö¡ï¿½ï¿½ï¿½ï¿½
     void Update()
     {
-        // ³ÖÐø³¯×îÔ¶µÄÇ½±Ú·½ÏòÒÆ¶¯
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½Ç½ï¿½Ú·ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
         transform.position += moveDirection * speed * Time.deltaTime;
     }
 
@@ -43,10 +43,10 @@ public class Enemy_0 : MonoBehaviour
         float randomX;
         float randomY;
 
-        // È·±£µÐÈËÉú³ÉÔÚ±ßÔµ
+        // È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½Ôµ
         if (Random.value > 0.5f)
         {
-            // Éú³ÉÔÚ×ó±ß»òÓÒ±ß±ßÔµ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß»ï¿½ï¿½Ò±ß±ï¿½Ôµ
             if (Random.value > 0.5f)
             {
                 randomX = -4.5f;
@@ -57,11 +57,11 @@ public class Enemy_0 : MonoBehaviour
                 randomX = 4.5f;
                 moveDirection = Vector3.left;
             }
-            randomY = Random.Range(-4f, 4f); // ÉÏÏÂ±ßÔµËæ»ú
+            randomY = Random.Range(-4f, 4f); // ï¿½ï¿½ï¿½Â±ï¿½Ôµï¿½ï¿½ï¿½
         }
         else
         {
-            // Éú³ÉÔÚÉÏ±ß»òÏÂ±ß±ßÔµ
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ß»ï¿½ï¿½Â±ß±ï¿½Ôµ
             if (Random.value > 0.5f)
             {
                 randomY = -4f;
@@ -72,32 +72,31 @@ public class Enemy_0 : MonoBehaviour
                 randomY = 4f;
                 moveDirection = Vector3.down;
             }
-            randomX = Random.Range(-4.5f, 4.5f); // ×óÓÒ±ßÔµËæ»ú
+            randomX = Random.Range(-4.5f, 4.5f); // ï¿½ï¿½ï¿½Ò±ï¿½Ôµï¿½ï¿½ï¿½
         }
 
         transform.position = new Vector3(randomX, randomY, 0);
     }
 
-    // ¼ì²âÓëÇ½±ÚµÄÅö×²²¢ÏûÊ§
+    // ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½Úµï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½Ê§
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Èç¹ûÅö×²µÄ¶ÔÏóÊÇÇ½±Ú£¬µÐÈËÏûÊ§
+        // ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½Ç½ï¿½Ú£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§
         if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
         {
-            // Ïú»ÙµÐÈË¶ÔÏó
+            // ï¿½ï¿½ï¿½Ùµï¿½ï¿½Ë¶ï¿½ï¿½ï¿½
             PassAway();
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // ¼ì²éÅö×²¶ÔÏóÊÇ·ñÊÇ×Óµ¯
+        // ï¿½ï¿½ï¿½ï¿½ï¿½×²ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½Óµï¿½
         if (collision.gameObject.CompareTag("Bullet"))
         {
-            // Ïú»Ù×Óµ¯
+            // ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½
             // Destory(collision.gameObject);
 
-            PassAway();
-        }
+        transform.position = new Vector3(randomX, randomY, 0);
     }
 
     private void PassAway()

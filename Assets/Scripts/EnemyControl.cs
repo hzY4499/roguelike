@@ -23,7 +23,7 @@ public class EnemyControl : MonoBehaviour
 
     }
 
-    // 协程每隔一段时间生成一个Enemy_1
+    // 协程每隔一段时间生成一个Enemy_0
     private IEnumerator SpawnEnemy()
     {
         while (true) // 无限循环
