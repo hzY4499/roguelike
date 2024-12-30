@@ -12,7 +12,8 @@ public class Enemy_0 : MonoBehaviour
     [SerializeField] private ParticleSystem spawnIndicator;
     [SerializeField] private SpriteRenderer enemyRenderer;
     [SerializeField] private ParticleSystem passAwayParticles;
-
+    float randomX;
+    float randomY;
     // Start ����Ϸ��ʼʱ����
     void Start()
     {       
@@ -40,9 +41,6 @@ public class Enemy_0 : MonoBehaviour
 
     private void RandomLocation()
     {
-        float randomX;
-        float randomY;
-
         // ȷ�����������ڱ�Ե
         if (Random.value > 0.5f)
         {
@@ -96,7 +94,8 @@ public class Enemy_0 : MonoBehaviour
             // �����ӵ�
             // Destory(collision.gameObject);
 
-        transform.position = new Vector3(randomX, randomY, 0);
+            transform.position = new Vector3(randomX, randomY, 0);
+        }
     }
 
     private void PassAway()
