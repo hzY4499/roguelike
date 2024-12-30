@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 如果碰撞的对象是Enemy_0，生命值减一
-        if (collision.gameObject.CompareTag("Enemy_0"))
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             TakeDamage(1f);
         }
