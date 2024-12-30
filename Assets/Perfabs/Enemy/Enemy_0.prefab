@@ -5116,6 +5116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passAwayParticles: {fileID: 4692820809539202227}
+  maxHealth: 10
   playerLevel: {fileID: 0}
 --- !u!1 &7417116180248656978
 GameObject:

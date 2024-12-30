@@ -7,10 +7,11 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float moveSpeed;  // 玩家移动速度
     [SerializeField] private bool isShooting;  // 玩家射击状态
     [SerializeField] private bool autoAtacking;// 是否自动射击
+    private bool autoShoot;
     private Transform enemy;
 
-    private float m_nextFire;
-    public float FireRate = 0.1f; // 开火速率
+    private float ShootTimer;
+    [SerializeField] private float ShootDelay = 0.1f; // 开火速率
     public GameObject Bullet;     // 子弹对象
     public float BulletSpeed;     // 子弹速度
 
@@ -19,6 +20,7 @@ public class PlayerControl : MonoBehaviour
 
     void Start()
     {
+        autoShoot = autoAtacking;
         rb = GetComponent<Rigidbody2D>();
         playerRotation = GetComponentInChildren<PlayerRotation>();
     }
@@ -30,9 +32,17 @@ public class PlayerControl : MonoBehaviour
 
         // 非自动射击情况下，更新射击状态
         if (!autoAtacking)
-            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0)) isShooting = true;
-            else isShooting = false;
-        else
+            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
+            {
+                isShooting = true;
+                autoShoot = false;
+            }
+            else
+            {
+                isShooting = false;
+                autoShoot = true;
+            }
+        if (autoShoot)
         {
             Enemy_0[] enemies = FindObjectsByType<Enemy_0>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
             int closestEnemyIndex = -1;
@@ -80,8 +90,8 @@ public class PlayerControl : MonoBehaviour
         else playerRotation.speed = initspeed;
 
         // 生成子弹
-        m_nextFire = m_nextFire + Time.fixedDeltaTime;
-        if (isShooting && m_nextFire > FireRate)
+        ShootTimer = ShootTimer + Time.fixedDeltaTime;
+        if (isShooting && ShootTimer > ShootDelay)
         {
             Vector3 m_mousePosition = Input.mousePosition;
             m_mousePosition = Camera.main.ScreenToWorldPoint(m_mousePosition);
@@ -92,7 +102,7 @@ public class PlayerControl : MonoBehaviour
 
             if (targetPosition.x > this.transform.position.x) m_fireAngle = -m_fireAngle;
 
-            m_nextFire = 0;
+            ShootTimer = 0;
 
             GameObject m_bullet = Instantiate(Bullet, transform.position, Quaternion.identity) as GameObject;
 

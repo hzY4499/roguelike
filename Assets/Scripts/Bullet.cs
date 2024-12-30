@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private int damage;
     private float aliveTime = 0.5f;
     // Start is called before the first frame update
     void Start()
     {
-        //aliveTime = 1.5f;
+
     }
 
     // Update is called once per frame
@@ -25,6 +26,10 @@ public class Bullet : MonoBehaviour
         {
             // Ïú»Ù×Óµ¯
             Destroy(gameObject);
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            collision.gameObject.GetComponent<EnemyCollider>().TakeDamage(damage);
         }
     }
 }

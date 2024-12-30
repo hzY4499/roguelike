@@ -5,21 +5,30 @@ using UnityEngine;
 public class EnemyCollider : MonoBehaviour
 {
     [SerializeField] private ParticleSystem passAwayParticles;
+
+    [SerializeField] private int maxHealth;
+    private int health;
+
     public PlayerLevel playerLevel;  // 引用 PlayerLevel 脚本
     // Start is called before the first frame update
     void Start()
     {
-        // 确保已经正确引用 PlayerLevel
-        if (playerLevel == null)
-        {
-            playerLevel = FindObjectOfType<PlayerLevel>();
-        }
+        health = maxHealth;
+        playerLevel = FindAnyObjectByType<PlayerLevel>();
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void TakeDamage(int damage)
+    {
+        int realDamage = Mathf.Min(damage, health);
+        health -= realDamage;
+
+        if (health <= 0) PassAway();
     }
 
     // 检测与墙壁的碰撞并消失
@@ -32,24 +41,12 @@ public class EnemyCollider : MonoBehaviour
             PassAway();
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        // 检查碰撞对象是否是子弹
-        if (collision.gameObject.CompareTag("Bullet"))
-        {
-            // 给玩家增加经验
-            if (playerLevel != null)
-            {
-                playerLevel.OnEnemyKilled();
-            }
-            PassAway();
-        }
-    }
 
     private void PassAway()
     {
         passAwayParticles.transform.parent = null;
         passAwayParticles.Play();
+        playerLevel.OnEnemyKilled();
         Destroy(gameObject.transform.parent.gameObject);
     }
 }
