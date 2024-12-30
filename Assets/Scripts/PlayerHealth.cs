@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI; // 引入UI命名空间
 
@@ -6,6 +7,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] public float maxHealth; // 最大生命值
     public float currentHealth; // 当前生命值
     public Slider healthSlider; // 生命条Slider组件
+    [SerializeField] private TextMeshProUGUI healthText;
     void Start()
     {
         currentHealth = maxHealth; // 初始化生命值
@@ -13,6 +15,7 @@ public class PlayerHealth : MonoBehaviour
         {
             healthSlider.maxValue = maxHealth; // 设置生命条的最大值
             healthSlider.value = currentHealth; // 设置当前生命条的值
+            healthText.text = currentHealth.ToString();
         }
     }
     void Update()
@@ -27,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage; // 生命值减少
+        healthText.text = currentHealth.ToString();
         // 这里可以添加死亡逻辑
         if (currentHealth <= 0f)
         {
