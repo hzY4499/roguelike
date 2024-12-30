@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8620812511376540711}
   - component: {fileID: 5575994975536742533}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Triangle
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -95,13 +95,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5145319193681479293}
-  - component: {fileID: 7060184926893777700}
   - component: {fileID: 8883453924934179237}
   - component: {fileID: 6526327696009031904}
   - component: {fileID: 8281956678873037653}
   - component: {fileID: 5984457316823222189}
   - component: {fileID: 6017605166273660784}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -124,20 +123,6 @@ Transform:
   - {fileID: 6417852981522389069}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7060184926893777700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379860011659488057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a257b7a6cdf39a84ca8b747238c13bd3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initSpeed: 10
-  speed: 0
 --- !u!114 &8883453924934179237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +141,6 @@ MonoBehaviour:
   FireRate: 0.1
   Bullet: {fileID: 1657736296376420674, guid: 08019878646dc484a9381bc644669546, type: 3}
   BulletSpeed: 5
-  playerRotation: {fileID: 7060184926893777700}
 --- !u!50 &6526327696009031904
 Rigidbody2D:
   serializedVersion: 4
@@ -233,8 +217,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
+  currentHealth: 1
   healthSlider: {fileID: 0}
+  healthText: {fileID: 0}
 --- !u!114 &6017605166273660784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +242,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1540952923513448954}
   - component: {fileID: 7957035267134258618}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +327,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6417852981522389069}
-  m_Layer: 0
+  - component: {fileID: 1692043643521744091}
+  m_Layer: 6
   m_Name: Player Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,3 +352,17 @@ Transform:
   - {fileID: 1540952923513448954}
   m_Father: {fileID: 5145319193681479293}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1692043643521744091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8170175036156226251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a257b7a6cdf39a84ca8b747238c13bd3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initSpeed: 10
+  speed: 0

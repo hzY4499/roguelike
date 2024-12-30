@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3571808844053869822}
   - component: {fileID: 5562133402875070212}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy_0
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 3055806763663596242}
   - component: {fileID: 7673257622541425019}
   - component: {fileID: 5295328763756559366}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spawn Indicator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4954,7 +4954,7 @@ GameObject:
   - component: {fileID: 9064792856407035570}
   - component: {fileID: 8762047248514422445}
   - component: {fileID: 9032373070992536842}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy Renderer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -5116,6 +5116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passAwayParticles: {fileID: 4692820809539202227}
+  playerLevel: {fileID: 0}
 --- !u!1 &7417116180248656978
 GameObject:
   m_ObjectHideFlags: 0
@@ -5127,7 +5128,7 @@ GameObject:
   - component: {fileID: 6228134942019278444}
   - component: {fileID: 4692820809539202227}
   - component: {fileID: 240507671105118403}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Pass Away Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}

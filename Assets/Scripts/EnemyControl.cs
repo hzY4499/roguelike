@@ -28,11 +28,10 @@ public class EnemyControl : MonoBehaviour
     {
         while (true) // 无限循环
         {
-            // 生成敌人
-            Instantiate(enemy0Prefab);
-
             // 等待指定时间
             yield return new WaitForSeconds(spawnInterval);
+            // 生成敌人
+            Instantiate(enemy0Prefab);
         }
     }
 }

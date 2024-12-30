@@ -7,19 +7,20 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float moveSpeed;  // 玩家移动速度
     [SerializeField] private bool isShooting;  // 玩家射击状态
     [SerializeField] private bool autoAtacking;// 是否自动射击
-
+    private Transform enemy;
 
     private float m_nextFire;
     public float FireRate = 0.1f; // 开火速率
     public GameObject Bullet;     // 子弹对象
     public float BulletSpeed;     // 子弹速度
 
-    public PlayerRotation playerRotation;
+    private PlayerRotation playerRotation;
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        playerRotation = GetComponentInChildren<PlayerRotation>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,30 @@ public class PlayerControl : MonoBehaviour
         if (!autoAtacking)
             if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0)) isShooting = true;
             else isShooting = false;
+        else
+        {
+            Enemy_0[] enemies = FindObjectsByType<Enemy_0>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            int closestEnemyIndex = -1;
+            float minDistance = 5000;
+
+            for (int i = 0; i < enemies.Length; i++)
+            {
+                Enemy_0 enemyChecked = enemies[i];
+                float distanceToEnemy = Vector2.Distance(transform.position, enemyChecked.transform.position);
+                if (distanceToEnemy < minDistance)
+                {
+                    closestEnemyIndex = i;
+                    minDistance = distanceToEnemy;
+                }
+            }
+
+            if (closestEnemyIndex != -1)
+            {
+                isShooting = true;
+                enemy = enemies[closestEnemyIndex].transform;
+            }
+            else isShooting = false;
+        }
 
         PlayerShoot();
     }
@@ -61,16 +86,17 @@ public class PlayerControl : MonoBehaviour
             Vector3 m_mousePosition = Input.mousePosition;
             m_mousePosition = Camera.main.ScreenToWorldPoint(m_mousePosition);
             m_mousePosition.z = 0;
+            Vector3 targetPosition = autoAtacking ? enemy.position : m_mousePosition;
 
-            float m_fireAngle = Vector2.Angle(m_mousePosition - this.transform.position, Vector2.up);
+            float m_fireAngle = Vector2.Angle(targetPosition - this.transform.position, Vector2.up);
 
-            if (m_mousePosition.x > this.transform.position.x) m_fireAngle = -m_fireAngle;
+            if (targetPosition.x > this.transform.position.x) m_fireAngle = -m_fireAngle;
 
             m_nextFire = 0;
 
             GameObject m_bullet = Instantiate(Bullet, transform.position, Quaternion.identity) as GameObject;
 
-            m_bullet.GetComponent<Rigidbody2D>().velocity = ((m_mousePosition - transform.position).normalized * BulletSpeed);
+            m_bullet.GetComponent<Rigidbody2D>().velocity = ((targetPosition - this.transform.position).normalized * BulletSpeed);
 
             m_bullet.transform.eulerAngles = new Vector3(0, 0, m_fireAngle);
         }
