@@ -27,17 +27,18 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage; // 生命值减少
-        currentHealth = Mathf.Clamp(currentHealth, 0f, maxHealth); // 保证生命值不小于0
-
         // 这里可以添加死亡逻辑
         if (currentHealth <= 0f)
         {
+
             Die();
         }
     }
     // 死亡处理
     void Die()
     {
+        currentHealth = 0;
+        healthSlider.value = 0;
         // 例如，玩家死亡时打印信息并禁用玩家对象
         Debug.Log("Player has died!");
         gameObject.SetActive(false);
