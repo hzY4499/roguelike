@@ -6,11 +6,11 @@ using UnityEngine.UI;  // 引入 Slider 所需的命名空间
 
 public class PlayerLevel : MonoBehaviour
 {
-    public int currentLevel = 1;  // 当前等级
+    public int currentLevel = 0;  // 当前等级
     private int currentXP = 0;     // 当前经验值
     public TMP_Text levelText;    // 使用 TMP_Text 而不是 Text
     //public TMP_Text xpText;       // 使用 TMP_Text 而不是 Text
-    private Slider xpSlider;       // 添加一个Slider来显示经验值的进度
+    public Slider xpSlider;       // 添加一个Slider来显示经验值的进度
 
     // 每个等级所需的经验值
     private int[] xpRequiredForLevel = new int[] { 0, 10, 20, 25, 30, 45, 50, 55, 60, 65, 70 };

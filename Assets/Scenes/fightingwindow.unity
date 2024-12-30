@@ -4653,6 +4653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentLevel: 1
   levelText: {fileID: 1906790579}
+  xpSlider: {fileID: 1752936850}
   xpPerEnemyKill: 5
 --- !u!1 &1085696030
 GameObject:
