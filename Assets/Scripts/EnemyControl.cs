@@ -31,7 +31,7 @@ public class EnemyControl : MonoBehaviour
             // 等待指定时间
             yield return new WaitForSeconds(spawnInterval);
             // 生成敌人
-            Instantiate(enemy0Prefab);
+            Instantiate(enemy0Prefab, transform);
         }
     }
 }

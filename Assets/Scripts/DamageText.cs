@@ -20,8 +20,9 @@ public class DamageText : MonoBehaviour
         
     }
     
-    private void Animate()
+    public void Animate(int damage)
     {
+        damageText.text = damage.ToString();
         animator.Play("Animate");
     }
 }

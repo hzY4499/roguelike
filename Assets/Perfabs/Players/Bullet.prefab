@@ -198,7 +198,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  playerLevel: {fileID: 0}
 --- !u!1 &4087564737772569722
 GameObject:
   m_ObjectHideFlags: 0

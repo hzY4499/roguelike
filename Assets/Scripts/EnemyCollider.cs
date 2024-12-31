@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class EnemyCollider : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class EnemyCollider : MonoBehaviour
 
     [SerializeField] private int maxHealth;
     private int health;
+
+    public static Action<int, Vector2> onDamageTaken;
 
     public PlayerLevel playerLevel;  // ÒýÓÃ PlayerLevel ½Å±¾
     // Start is called before the first frame update
@@ -27,6 +30,8 @@ public class EnemyCollider : MonoBehaviour
     {
         int realDamage = Mathf.Min(damage, health);
         health -= realDamage;
+
+        onDamageTaken?.Invoke(damage, transform.position);
 
         if (health <= 0) PassAway();
     }

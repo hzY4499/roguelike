@@ -31,17 +31,16 @@ public class PlayerControl : MonoBehaviour
         PlayerMove();
 
         // 非自动射击情况下，更新射击状态
-        if (!autoAtacking)
-            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
-            {
-                isShooting = true;
-                autoShoot = false;
-            }
-            else
-            {
-                isShooting = false;
-                autoShoot = true;
-            }
+        if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
+        {
+            isShooting = true;
+            if (autoAtacking) autoShoot = false;
+         }
+         else
+         {
+            isShooting = false;
+            if (autoAtacking) autoShoot = true;
+         }
         if (autoShoot)
         {
             Enemy_0[] enemies = FindObjectsByType<Enemy_0>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
@@ -96,7 +95,7 @@ public class PlayerControl : MonoBehaviour
             Vector3 m_mousePosition = Input.mousePosition;
             m_mousePosition = Camera.main.ScreenToWorldPoint(m_mousePosition);
             m_mousePosition.z = 0;
-            Vector3 targetPosition = autoAtacking ? enemy.position : m_mousePosition;
+            Vector3 targetPosition = autoShoot ? enemy.position : m_mousePosition;
 
             float m_fireAngle = Vector2.Angle(targetPosition - this.transform.position, Vector2.up);
 
@@ -105,6 +104,8 @@ public class PlayerControl : MonoBehaviour
             ShootTimer = 0;
 
             GameObject m_bullet = Instantiate(Bullet, transform.position, Quaternion.identity) as GameObject;
+
+            m_bullet.transform.parent = transform;
 
             m_bullet.GetComponent<Rigidbody2D>().velocity = ((targetPosition - this.transform.position).normalized * BulletSpeed);
 

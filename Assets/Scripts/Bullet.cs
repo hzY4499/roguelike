@@ -29,6 +29,7 @@ public class Bullet : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
+            Destroy(gameObject);
             collision.gameObject.GetComponent<EnemyCollider>().TakeDamage(damage);
         }
     }
