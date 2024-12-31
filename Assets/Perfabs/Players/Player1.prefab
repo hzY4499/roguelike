@@ -138,9 +138,9 @@ MonoBehaviour:
   moveSpeed: 3
   isShooting: 0
   autoAtacking: 0
-  ShootDelay: 0.1
+  ShootDelay: 0.2
   Bullet: {fileID: 1657736296376420674, guid: 08019878646dc484a9381bc644669546, type: 3}
-  BulletSpeed: 5
+  BulletSpeed: 10
 --- !u!50 &6526327696009031904
 Rigidbody2D:
   serializedVersion: 4

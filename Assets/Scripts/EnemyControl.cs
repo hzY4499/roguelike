@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyControl : MonoBehaviour
 {
-    // 预设的Enemy_0对象
-    public GameObject enemy0Prefab;
+    // 预设的Enemy对象
+    public GameObject[] enemyPrefabs;
 
     // 生成敌人间隔时间
     public float spawnInterval = 3.0f;
@@ -30,8 +30,9 @@ public class EnemyControl : MonoBehaviour
         {
             // 等待指定时间
             yield return new WaitForSeconds(spawnInterval);
+            int randomIndex = Random.Range(0, enemyPrefabs.Length);
             // 生成敌人
-            Instantiate(enemy0Prefab, transform);
+            Instantiate(enemyPrefabs[randomIndex], transform);
         }
     }
 }

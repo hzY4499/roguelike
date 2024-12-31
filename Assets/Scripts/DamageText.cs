@@ -17,7 +17,10 @@ public class DamageText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Rest"))
+        {
+            Destroy(gameObject);
+        }
     }
     
     public void Animate(int damage)

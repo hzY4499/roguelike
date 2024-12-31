@@ -201,7 +201,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8883453924934179237, guid: 1065f939909eeff49b13d0138be89354, type: 3}
       propertyPath: ShootDelay
-      value: 1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8883453924934179237, guid: 1065f939909eeff49b13d0138be89354, type: 3}
       propertyPath: autoAtacking
@@ -4908,8 +4908,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a22b22b4f64dcf7419eb5c6a2c6e80f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy0Prefab: {fileID: 358166477332692170, guid: aaea852fcdd318f43b1ed8f842bdf757, type: 3}
-  spawnInterval: 2
+  enemyPrefabs:
+  - {fileID: 358166477332692170, guid: aaea852fcdd318f43b1ed8f842bdf757, type: 3}
+  - {fileID: 358166477332692170, guid: 0a9605c2a62624849b755b7b910beac9, type: 3}
+  spawnInterval: 1
 --- !u!1 &1542763167
 GameObject:
   m_ObjectHideFlags: 0
