@@ -16,11 +16,14 @@ public class PlayerLevel : MonoBehaviour
     private int[] xpRequiredForLevel = new int[] { 0, 10, 20, 25, 30, 45, 50, 55, 60, 65, 70 };
 
     // 每击杀一个敌人，玩家获得的经验
-    public int xpPerBall = 5;
-
+    private int xpPerBall = 1;
+    // 需要引用的暂停面板
+    public GameObject levelUpPanel;//升级面板
     // Start is called before the first frame update
     void Start()
     {
+        // 隐藏升级面板
+        levelUpPanel.SetActive(false);
         UpdateUI();  // 初始更新UI
     }
 
@@ -51,6 +54,9 @@ public class PlayerLevel : MonoBehaviour
         {
             // 升级
             currentLevel++;
+            // 显示升级面板
+            levelUpPanel.SetActive(true);
+            Time.timeScale = 0f;
             // 重置经验为0
             currentXP = 0;
         }
@@ -67,5 +73,18 @@ public class PlayerLevel : MonoBehaviour
         // 计算经验进度，范围从 0 到 1
         float xpProgress = (float)currentXP / xpRequiredForLevel[currentLevel];
         xpSlider.value = xpProgress;  // 更新 Slider 的值
+    }
+    // 显示等级提升的面板
+    private void ShowLevelUpPanel()
+    {
+        // 显示升级面板
+        levelUpPanel.SetActive(true);
+    }
+
+    // 关闭升级面板（可以在面板的按钮点击事件中调用）
+    public void CloseLevelUpPanel()
+    {
+        // 隐藏升级面板
+        levelUpPanel.SetActive(false);
     }
 }
