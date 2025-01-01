@@ -12,14 +12,12 @@ public class EnemyCollider : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
-    public static Action<int, Vector2> onDamageTaken;
-
-    public PlayerLevel playerLevel;  // ÒýÓÃ PlayerLevel ½Å±¾
+    public static Action<int, Vector2, bool> onDamageTaken;
+    public static Action<Vector2> onPassedAway;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
-        playerLevel = FindAnyObjectByType<PlayerLevel>();
     }
 
     // Update is called once per frame
@@ -28,14 +26,14 @@ public class EnemyCollider : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, bool isCriticalHit)
     {
         int realDamage = Mathf.Min(damage, health);
         health -= realDamage;
 
         animator.Play("GetDamage");
 
-        onDamageTaken?.Invoke(damage, transform.position);
+        onDamageTaken?.Invoke(damage, transform.position, isCriticalHit);
 
         if (health <= 0) PassAway();
     }
@@ -53,9 +51,10 @@ public class EnemyCollider : MonoBehaviour
 
     private void PassAway()
     {
+        onPassedAway?.Invoke(transform.position);
+        
         passAwayParticles.transform.parent = null;
         passAwayParticles.Play();
-        playerLevel.OnEnemyKilled();
         Destroy(gameObject.transform.parent.gameObject);
     }
 }

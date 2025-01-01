@@ -22,9 +22,11 @@ public class DamageText : MonoBehaviour
         if (lifeTime <= 0) Destroy(gameObject);
     }
     
-    public void Animate(int damage)
+    public void Animate(int damage, bool isCriticalHit)
     {
         damageText.text = damage.ToString();
+        damageText.color = isCriticalHit ? Color.yellow : Color.white;
+
         animator.Play("Animate");
     }
 }
