@@ -5117,9 +5117,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passAwayParticles: {fileID: 4692820809539202227}
-  maxHealth: 10
+  maxHealth: 1
   animator: {fileID: 8871320784997122112}
-  playerLevel: {fileID: 0}
 --- !u!95 &8871320784997122112
 Animator:
   serializedVersion: 7

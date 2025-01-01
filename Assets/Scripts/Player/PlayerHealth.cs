@@ -41,6 +41,13 @@ public class PlayerHealth : MonoBehaviour
             Die();
         }
     }
+    // 回复血量
+    public void Recovery(float recoveryHealth)
+    {
+        currentHealth += recoveryHealth;
+        if (currentHealth >= maxHealth) currentHealth = maxHealth;
+        healthText.text = currentHealth.ToString();
+    }
     // 死亡处理
     void Die()
     {
@@ -53,10 +60,10 @@ public class PlayerHealth : MonoBehaviour
     // 检测与Enemy_0的碰撞并消失
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // 如果碰撞的对象是Enemy_0，生命值减一
+        // 如果碰撞的对象是Enemy，生命值减少
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            TakeDamage(1f);
+            TakeDamage(5f);
         }
     }
 }

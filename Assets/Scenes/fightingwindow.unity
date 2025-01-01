@@ -364,7 +364,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 10
+  m_text: 30
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1eee363a74a0bba409f7f0a10da2261e, type: 2}
   m_sharedMaterial: {fileID: -6932200566149645828, guid: 1eee363a74a0bba409f7f0a10da2261e, type: 2}
@@ -560,7 +560,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 54601cd0fad99c849b6ffc166cca4ca2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4889,6 +4889,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expBallPerfab: {fileID: 6500994916151232146, guid: e24e28cc2c98ea645bf0bbdd8499680d, type: 3}
+  healDropsPerfab: {fileID: 9106796112335550457, guid: 368c504c048ad104d87eb007cba97987, type: 3}
 --- !u!1 &1304953021
 GameObject:
   m_ObjectHideFlags: 0

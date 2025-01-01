@@ -42,10 +42,15 @@ public class EnemyCollider : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // 如果碰撞的对象是墙壁，敌人消失
-        if (collision.gameObject.CompareTag("Wall") || collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Wall"))
         {
             // 销毁敌人对象
             PassAway();
+        }
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            health--;
+            if (health <= 0) PassAway();
         }
     }
 
