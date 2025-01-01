@@ -51,8 +51,7 @@ public class DropManager : MonoBehaviour
     {
         bool shouldSpawnDrops = Random.Range(0, 101) <= 20;
         DropItems drops = shouldSpawnDrops ? healDropsPool.Get() : expBallPool.Get();
-
-        Instantiate(drops, enemyPosition, Quaternion.identity, transform);
+        drops.transform.position = enemyPosition;
     }
 
     private void ReleaseExpBall(ExpBall expBall) => expBallPool.Release(expBall);
