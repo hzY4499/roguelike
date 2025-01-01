@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5562133402875070212}
   m_Layer: 7
   m_Name: Enemy_0
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.06, y: 0.06, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3055806763663596242}
@@ -4954,6 +4954,7 @@ GameObject:
   - component: {fileID: 9064792856407035570}
   - component: {fileID: 8762047248514422445}
   - component: {fileID: 9032373070992536842}
+  - component: {fileID: 8871320784997122112}
   m_Layer: 7
   m_Name: Enemy Renderer
   m_TagString: Enemy
@@ -4971,7 +4972,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3571808844053869822}
@@ -5117,7 +5118,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   passAwayParticles: {fileID: 4692820809539202227}
   maxHealth: 10
+  animator: {fileID: 8871320784997122112}
   playerLevel: {fileID: 0}
+--- !u!95 &8871320784997122112
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5289585042706342668}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: aa35172aa89ed5f4e8b7daf1e9a7d2c3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7417116180248656978
 GameObject:
   m_ObjectHideFlags: 0

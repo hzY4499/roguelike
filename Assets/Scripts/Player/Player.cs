@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControl : MonoBehaviour
+public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed;  // 玩家移动速度
     [SerializeField] private bool isShooting;  // 玩家射击状态
@@ -43,27 +43,34 @@ public class PlayerControl : MonoBehaviour
          }
         if (autoShoot)
         {
-            Enemy_0[] enemies = FindObjectsByType<Enemy_0>(FindObjectsInactive.Exclude, FindObjectsSortMode.None);
+            GameObject[] enemyObjects = GameObject.FindGameObjectsWithTag("Enemy");
             int closestEnemyIndex = -1;
             float minDistance = 5000;
 
-            for (int i = 0; i < enemies.Length; i++)
+            for (int i = 0; i < enemyObjects.Length; i++)
             {
-                Enemy_0 enemyChecked = enemies[i];
-                float distanceToEnemy = Vector2.Distance(transform.position, enemyChecked.transform.position);
-                if (distanceToEnemy < minDistance)
+                GameObject enemyChecked = enemyObjects[i];
+                if (enemyChecked.GetComponent<Renderer>().enabled) // 避免锁定敌人生成特效
                 {
-                    closestEnemyIndex = i;
-                    minDistance = distanceToEnemy;
+                    float distanceToEnemy = Vector2.Distance(transform.position, enemyChecked.transform.position);
+                    if (distanceToEnemy < minDistance)
+                    {
+                        closestEnemyIndex = i;
+                        minDistance = distanceToEnemy;
+                    }
                 }
             }
 
             if (closestEnemyIndex != -1)
             {
                 isShooting = true;
-                enemy = enemies[closestEnemyIndex].transform;
+                enemy = enemyObjects[closestEnemyIndex].transform;
             }
-            else isShooting = false;
+            else
+            {
+                isShooting = false;
+                enemy = null;
+            }
         }
 
         PlayerShoot();
@@ -97,19 +104,29 @@ public class PlayerControl : MonoBehaviour
             m_mousePosition.z = 0;
             Vector3 targetPosition = autoShoot ? enemy.position : m_mousePosition;
 
-            float m_fireAngle = Vector2.Angle(targetPosition - this.transform.position, Vector2.up);
-
-            if (targetPosition.x > this.transform.position.x) m_fireAngle = -m_fireAngle;
+            // 计算基础射击角度
+            float baseFireAngle = Vector2.Angle(targetPosition - this.transform.position, Vector2.up);
+            if (targetPosition.x > this.transform.position.x) baseFireAngle = -baseFireAngle;
 
             ShootTimer = 0;
 
-            GameObject m_bullet = Instantiate(Bullet, transform.position, Quaternion.identity) as GameObject;
+            // 散射角度间隔
+            float spreadAngle = 10f; // 每颗子弹之间的角度间隔
 
-            m_bullet.transform.parent = transform;
+            // 生成三颗子弹
+            for (int i = -1; i <= 1; i++)
+            {
+                float m_fireAngle = baseFireAngle + i * spreadAngle;
 
-            m_bullet.GetComponent<Rigidbody2D>().velocity = ((targetPosition - this.transform.position).normalized * BulletSpeed);
+                GameObject m_bullet = Instantiate(Bullet, transform.position, Quaternion.identity) as GameObject;
+                m_bullet.transform.parent = transform;
 
-            m_bullet.transform.eulerAngles = new Vector3(0, 0, m_fireAngle);
+                // 计算子弹方向
+                Vector3 shootDirection = Quaternion.Euler(0, 0, m_fireAngle) * Vector2.up;
+                m_bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * BulletSpeed;
+
+                m_bullet.transform.eulerAngles = new Vector3(0, 0, m_fireAngle);
+            }
         }
     }
     // 碰撞检测

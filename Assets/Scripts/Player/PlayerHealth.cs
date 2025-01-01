@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth; // 当前生命值
     public Slider healthSlider; // 生命条Slider组件
     [SerializeField] private TextMeshProUGUI healthText;
+
+    [SerializeField] private Animator animator;
     void Start()
     {
         currentHealth = maxHealth; // 初始化生命值
@@ -30,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage; // 生命值减少
+        animator.Play("GetDamage");
         healthText.text = currentHealth.ToString();
         // 这里可以添加死亡逻辑
         if (currentHealth <= 0f)

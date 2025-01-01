@@ -127,10 +127,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1621541141}
     m_Modifications:
-    - target: {fileID: 374911360688027015, guid: 1065f939909eeff49b13d0138be89354, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 1048900947446140198, guid: 1065f939909eeff49b13d0138be89354, type: 3}
       propertyPath: xpSlider
       value: 
@@ -142,10 +138,6 @@ PrefabInstance:
     - target: {fileID: 2379860011659488057, guid: 1065f939909eeff49b13d0138be89354, type: 3}
       propertyPath: m_Name
       value: Player1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4096719042252427895, guid: 1065f939909eeff49b13d0138be89354, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5145319193681479293, guid: 1065f939909eeff49b13d0138be89354, type: 3}
       propertyPath: m_LocalPosition.x
@@ -195,18 +187,6 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 781300734}
-    - target: {fileID: 8170175036156226251, guid: 1065f939909eeff49b13d0138be89354, type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883453924934179237, guid: 1065f939909eeff49b13d0138be89354, type: 3}
-      propertyPath: ShootDelay
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8883453924934179237, guid: 1065f939909eeff49b13d0138be89354, type: 3}
-      propertyPath: autoAtacking
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4876,7 +4856,7 @@ GameObject:
   - component: {fileID: 1304953024}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4890,7 +4870,7 @@ Transform:
   m_GameObject: {fileID: 1304953021}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.54410034, y: -0.17720115, z: 0.025757447}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4910,6 +4890,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 358166477332692170, guid: aaea852fcdd318f43b1ed8f842bdf757, type: 3}
+  - {fileID: 358166477332692170, guid: 0f9162e8ca9f1484bb5467c5f0d0e0f7, type: 3}
   - {fileID: 358166477332692170, guid: 0a9605c2a62624849b755b7b910beac9, type: 3}
   spawnInterval: 1
 --- !u!1 &1542763167

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3571808844053869822}
-  - component: {fileID: -8934888202568496795}
+  - component: {fileID: 8815126476420764113}
   m_Layer: 7
-  m_Name: Enemy_1
+  m_Name: Enemy_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +35,7 @@ Transform:
   - {fileID: 6228134942019278444}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-8934888202568496795
+--- !u!114 &8815126476420764113
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,7 +44,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 358166477332692170}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95f96705890b6ca418a495f977a161d4, type: 3}
+  m_Script: {fileID: 11500000, guid: d3176f9078c28f24a920c13bb517e6a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
@@ -274,7 +274,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.854902, g: 0.5294118, b: 0.7372549, a: 1}
+      maxColor: {r: 0.30980393, g: 0.5686275, b: 0.8313726, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4954,7 +4954,7 @@ GameObject:
   - component: {fileID: 9064792856407035570}
   - component: {fileID: 8762047248514422445}
   - component: {fileID: 9032373070992536842}
-  - component: {fileID: 3992228295294599416}
+  - component: {fileID: 3404516711208619346}
   m_Layer: 7
   m_Name: Enemy Renderer
   m_TagString: Enemy
@@ -4972,7 +4972,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3571808844053869822}
@@ -5020,7 +5020,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2089972969577747650, guid: 35464b2637f8e614a9857b8383dcedb4, type: 3}
+  m_Sprite: {fileID: -2089972969577747650, guid: 16153ea4e92bc3f4092ed971541da9fb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -5096,7 +5096,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.27, y: 5.27}
+    oldSize: {x: 4.88, y: 4.36}
     newSize: {x: 5.09, y: 5.08}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -5117,10 +5117,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passAwayParticles: {fileID: 4692820809539202227}
-  maxHealth: 15
-  animator: {fileID: 3992228295294599416}
+  maxHealth: 25
+  animator: {fileID: 3404516711208619346}
   playerLevel: {fileID: 0}
---- !u!95 &3992228295294599416
+--- !u!95 &3404516711208619346
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -5365,7 +5365,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 2
       minColor: {r: 1, g: 1, b: 1, a: 1}
-      maxColor: {r: 0.86274517, g: 0.5294118, b: 0.7372549, a: 1}
+      maxColor: {r: 0.30980393, g: 0.5686275, b: 0.8352942, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}

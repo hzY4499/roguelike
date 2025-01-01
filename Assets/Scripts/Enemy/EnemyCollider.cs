@@ -10,6 +10,8 @@ public class EnemyCollider : MonoBehaviour
     [SerializeField] private int maxHealth;
     private int health;
 
+    [SerializeField] private Animator animator;
+
     public static Action<int, Vector2> onDamageTaken;
 
     public PlayerLevel playerLevel;  // ÒýÓÃ PlayerLevel ½Å±¾
@@ -30,6 +32,8 @@ public class EnemyCollider : MonoBehaviour
     {
         int realDamage = Mathf.Min(damage, health);
         health -= realDamage;
+
+        animator.Play("GetDamage");
 
         onDamageTaken?.Invoke(damage, transform.position);
 

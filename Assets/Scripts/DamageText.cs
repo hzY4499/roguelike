@@ -7,20 +7,19 @@ public class DamageText : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private TextMeshPro damageText;
+    private float lifeTime =  1.5f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Rest"))
-        {
-            Destroy(gameObject);
-        }
+        lifeTime -= Time.deltaTime;
+        if (lifeTime <= 0) Destroy(gameObject);
     }
     
     public void Animate(int damage)

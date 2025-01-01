@@ -27,7 +27,7 @@ public class Bullet : MonoBehaviour
             // 销毁子弹
             Destroy(gameObject);
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && collision.GetComponent<Renderer>().enabled) // 确保敌人生成特效不会触发
         {
             Destroy(gameObject);
             collision.gameObject.GetComponent<EnemyCollider>().TakeDamage(damage);
