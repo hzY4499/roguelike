@@ -16,7 +16,7 @@ public class PlayerLevel : MonoBehaviour
     private int[] xpRequiredForLevel = new int[] { 0, 10, 20, 25, 30, 45, 50, 55, 60, 65, 70 };
 
     // 每击杀一个敌人，玩家获得的经验
-    public int xpPerEnemyKill = 5;
+    public int xpPerBall = 5;
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +31,10 @@ public class PlayerLevel : MonoBehaviour
     }
 
     // 玩家击败敌人后调用此方法
-    public void OnEnemyKilled()
+    public void OnBallPicked()
     {
         // 增加经验
-        currentXP += xpPerEnemyKill;
+        currentXP += xpPerBall;
 
         // 检查是否升级
         CheckLevelUp();

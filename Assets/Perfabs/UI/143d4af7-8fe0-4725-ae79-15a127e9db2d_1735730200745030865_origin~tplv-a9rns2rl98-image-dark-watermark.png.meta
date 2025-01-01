@@ -156,7 +156,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      143d4af7-8fe0-4725-ae79-15a127e9db2d_1735730200745030865_origin~tplv-a9rns2rl98-image-dark-watermark_0: 7810735918648502601
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

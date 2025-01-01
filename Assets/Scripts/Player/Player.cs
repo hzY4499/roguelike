@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private float ShootTimer;
     [SerializeField] private float ShootDelay = 0.1f; // 开火速率
+    public int criticalRate = 10; // 暴击率（百分比）
+    public float criticalDamage = 1.6f; // 暴击伤害（百分比）
     public GameObject Bullet;     // 子弹对象
     public float BulletSpeed;     // 子弹速度
 
@@ -129,6 +131,7 @@ public class Player : MonoBehaviour
             }
         }
     }
+
     // 碰撞检测
     private void OnCollisionEnter2D(Collision2D collision)
     {

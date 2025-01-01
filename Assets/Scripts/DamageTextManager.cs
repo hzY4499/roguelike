@@ -26,10 +26,10 @@ public class DamageTextManager : MonoBehaviour
         
     }
 
-    private void instantiateDamageText(int damage, Vector2 enemyPos)
+    private void instantiateDamageText(int damage, Vector2 enemyPos, bool isCriticalHit)
     {
         Vector3 spawnPosition = enemyPos + Vector2.up * 0.2f;
         DamageText damageTextInstance = Instantiate(damageTextPerfab, spawnPosition, Quaternion.identity, transform);
-        damageTextInstance.Animate(damage);
+        damageTextInstance.Animate(damage, isCriticalHit);
     }
 }

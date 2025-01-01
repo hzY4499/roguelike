@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7aaa18b98d368fd4f92d964787b306f4
+guid: 854c3ad4840ab734086de2b93e73849e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2074092440654341805
-    second: b106692f-9a18-4203-b0c4-e7ec7f7628e9_1735728356629295541_origin~tplv-a9rns2rl98-image-dark-watermark_0
+      213: -5723008002129882988
+    second: expall_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,52 +96,26 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: b106692f-9a18-4203-b0c4-e7ec7f7628e9_1735728356629295541_origin~tplv-a9rns2rl98-image-dark-watermark_0
+      name: expall_0
       rect:
         serializedVersion: 2
-        x: 167
-        y: 146
-        width: 689
-        height: 727
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 205
+        y: 171
+        width: 444
+        height: 410
+      alignment: 9
+      pivot: {x: 0.5, y: 0.41}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 359997b0ae75733e0800000000000000
-      internalID: -2074092440654341805
+      spriteID: 490945a3b8ac390b0800000000000000
+      internalID: -5723008002129882988
       vertices: []
       indices: 
       edges: []
@@ -149,7 +123,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 7b9cfa7f808944340bc594e10de65a40
     internalID: 0
     vertices: []
     indices: 
@@ -157,7 +131,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      b106692f-9a18-4203-b0c4-e7ec7f7628e9_1735728356629295541_origin~tplv-a9rns2rl98-image-dark-watermark_0: -2074092440654341805
+      expall_0: -5723008002129882988
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -80,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 8.5, y: 8.5}
+  m_Size: {x: 5.39, y: 4.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -97,10 +97,11 @@ GameObject:
   - component: {fileID: 5145319193681479293}
   - component: {fileID: 8883453924934179237}
   - component: {fileID: 6526327696009031904}
-  - component: {fileID: 8281956678873037653}
   - component: {fileID: 5984457316823222189}
   - component: {fileID: 1048900947446140198}
   - component: {fileID: -1867446690608213766}
+  - component: {fileID: 2602664561100381095}
+  - component: {fileID: 3669594893175552218}
   m_Layer: 6
   m_Name: Player1
   m_TagString: Player
@@ -140,6 +141,8 @@ MonoBehaviour:
   isShooting: 0
   autoAtacking: 1
   ShootDelay: 0.2
+  criticalRate: 10
+  criticalDamage: 1.6
   Bullet: {fileID: 1657736296376420674, guid: 08019878646dc484a9381bc644669546, type: 3}
   BulletSpeed: 10
 --- !u!50 &6526327696009031904
@@ -169,7 +172,62 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &8281956678873037653
+--- !u!114 &5984457316823222189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2379860011659488057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc5074e87107284090d0f406b7ff5ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  currentHealth: 1
+  healthSlider: {fileID: 0}
+  healthText: {fileID: 0}
+  animator: {fileID: -1867446690608213766}
+--- !u!114 &1048900947446140198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2379860011659488057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9839632e3fe66b9409de341056dee35a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+  levelText: {fileID: 0}
+  xpSlider: {fileID: 0}
+  xpPerBall: 5
+--- !u!95 &-1867446690608213766
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2379860011659488057}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9206277641fd9c34daf1825e46139c26, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &2602664561100381095
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,9 +261,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_Radius: 4.75
---- !u!114 &5984457316823222189
+  m_Offset: {x: -0.05, y: -0.07}
+  m_Radius: 4.57
+--- !u!114 &3669594893175552218
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -214,52 +272,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2379860011659488057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0cc5074e87107284090d0f406b7ff5ae, type: 3}
+  m_Script: {fileID: 11500000, guid: 2d92247a4c842ad46918e36edeb18dac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  currentHealth: 1
-  healthSlider: {fileID: 0}
-  healthText: {fileID: 0}
-  animator: {fileID: -1867446690608213766}
---- !u!114 &1048900947446140198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379860011659488057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9839632e3fe66b9409de341056dee35a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentLevel: 1
-  levelText: {fileID: 0}
-  xpSlider: {fileID: 0}
-  xpPerEnemyKill: 5
---- !u!95 &-1867446690608213766
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2379860011659488057}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9206277641fd9c34daf1825e46139c26, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4096719042252427895
 GameObject:
   m_ObjectHideFlags: 0
