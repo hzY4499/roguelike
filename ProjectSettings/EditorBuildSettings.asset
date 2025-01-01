@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/mainwindow.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/fightingwindow.unity
+    guid: a12fa134762cec84b8ac2b60aad5dabd
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

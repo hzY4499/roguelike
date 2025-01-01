@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 16153ea4e92bc3f4092ed971541da9fb
+guid: 7aaa18b98d368fd4f92d964787b306f4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2089972969577747650
-    second: enemy_2_0
+      213: -2074092440654341805
+    second: b106692f-9a18-4203-b0c4-e7ec7f7628e9_1735728356629295541_origin~tplv-a9rns2rl98-image-dark-watermark_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enemy_2_0
+      name: b106692f-9a18-4203-b0c4-e7ec7f7628e9_1735728356629295541_origin~tplv-a9rns2rl98-image-dark-watermark_0
       rect:
         serializedVersion: 2
-        x: 181
-        y: 207
-        width: 488
-        height: 436
+        x: 167
+        y: 146
+        width: 689
+        height: 727
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e3b662648aceef2e0800000000000000
-      internalID: -2089972969577747650
+      spriteID: 359997b0ae75733e0800000000000000
+      internalID: -2074092440654341805
       vertices: []
       indices: 
       edges: []
@@ -156,8 +156,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      enemy_2_0: -2089972969577747650
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
