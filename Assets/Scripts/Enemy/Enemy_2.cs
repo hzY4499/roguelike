@@ -5,16 +5,16 @@ using UnityEngine;
 public class Enemy_2 : Enemy
 {
     private Player player;
-
+    
     new void Start()
     {
         base.Start();
+        score = 10;
         player = FindFirstObjectByType<Player>();
     }
-
-    protected void Update()
+    new void Update()
     {
-        moveDirection = (player.transform.position - transform.position).normalized;
+        moveDirection = gameManager.isOver ? Vector2.zero : (player.transform.position - transform.position).normalized;
         transform.position += moveDirection * speed * Time.deltaTime;
         transform.Rotate(new Vector3(0, 0, 50f) * Time.deltaTime);
     }  

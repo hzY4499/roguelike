@@ -13,12 +13,14 @@ public class Enemy_1 : Enemy
     new void Start()
     {
         base.Start();
+        score = 5;
         delayTimer = moveDelay;
         moveTimer = moveTime;
         isMoving = false;
     }
-    void Update()
+    new void Update()
     {
+        base.Update();
         if (isMoving)
         {
             moveTimer -= Time.deltaTime;

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Enemy_0 : Enemy
 {
-    //new void Start()
-    //{
-    //    base.Start();
-    //}
-
-    protected void Update()
+    new void Start()
     {
+        base.Start();
+        score = 1;
+    }
+    
+    new void Update()
+    {
+        base.Update();
         transform.position += moveDirection * speed * Time.deltaTime;
     }  
 

@@ -24,7 +24,7 @@ public abstract class DropItems : MonoBehaviour, ICollectable
 
         while (timer < 1)
         {
-            Vector2 targetPosition = player.transform.position;
+            Vector2 targetPosition = player != null ? player.transform.position : transform.position;
             transform.position = Vector2.Lerp(initialPosition, targetPosition, timer);
             timer += Time.deltaTime;
             yield return null;

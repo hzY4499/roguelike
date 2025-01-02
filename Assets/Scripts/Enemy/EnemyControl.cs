@@ -20,7 +20,7 @@ public class EnemyControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (FindAnyObjectByType<GameManager>().isOver) StopAllCoroutines();
     }
 
     // 协程每隔一段时间生成一个Enemy_0

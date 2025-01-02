@@ -8,8 +8,10 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealth; // 当前生命值
     public Slider healthSlider; // 生命条Slider组件
     [SerializeField] private TextMeshProUGUI healthText;
+    [SerializeField] private ParticleSystem passAwayParticles;
 
     [SerializeField] private Animator animator;
+    [SerializeField] private GameManager gameManager;
     void Start()
     {
         currentHealth = maxHealth; // 初始化生命值
@@ -53,9 +55,11 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth = 0;
         healthSlider.value = 0;
-        // 例如，玩家死亡时打印信息并禁用玩家对象
-        Debug.Log("Player has died!");
-        gameObject.SetActive(false);
+        passAwayParticles.transform.parent = null;
+        passAwayParticles.Play();
+        Destroy(gameObject);
+        gameManager.GameOver();
+        //gameObject.SetActive(false);
     }
     // 检测与Enemy_0的碰撞并消失
     private void OnCollisionEnter2D(Collision2D collision)

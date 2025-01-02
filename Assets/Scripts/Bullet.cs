@@ -36,6 +36,7 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
             int curDamage = GetDamage(out bool isCriticalHit);
+            collision.gameObject.GetComponent<EnemyCollider>().SetDestroyReason(EnemyCollider.DestroyReason.PlayerAttack);
             collision.gameObject.GetComponent<EnemyCollider>().TakeDamage(curDamage, isCriticalHit);
         }
     }

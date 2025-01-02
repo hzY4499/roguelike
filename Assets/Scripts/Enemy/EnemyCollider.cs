@@ -14,16 +14,31 @@ public class EnemyCollider : MonoBehaviour
 
     public static Action<int, Vector2, bool> onDamageTaken;
     public static Action<Vector2> onPassedAway;
-    // Start is called before the first frame update
+
+    // 销毁原因枚举
+    public enum DestroyReason
+    {
+        PlayerAttack, // 被玩家攻击
+        Other         // 其他原因（包括撞墙）
+    }
+
+    private DestroyReason destroyReason = DestroyReason.Other; // 默认销毁原因
+
+    // 设置销毁原因
+    public void SetDestroyReason(DestroyReason reason)
+    {
+        destroyReason = reason;
+    }
+
+    // 获取销毁原因
+    public DestroyReason GetDestroyReason()
+    {
+        return destroyReason;
+    }
+
     void Start()
     {
         health = maxHealth;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void TakeDamage(int damage, bool isCriticalHit)
@@ -35,7 +50,11 @@ public class EnemyCollider : MonoBehaviour
 
         onDamageTaken?.Invoke(damage, transform.position, isCriticalHit);
 
-        if (health <= 0) PassAway();
+        if (health <= 0)
+        {
+            SetDestroyReason(DestroyReason.PlayerAttack); // 被玩家攻击
+            PassAway();
+        }
     }
 
     // 检测与墙壁的碰撞并消失
@@ -44,20 +63,24 @@ public class EnemyCollider : MonoBehaviour
         // 如果碰撞的对象是墙壁，敌人消失
         if (collision.gameObject.CompareTag("Wall"))
         {
-            // 销毁敌人对象
+            SetDestroyReason(DestroyReason.Other); // 撞墙属于其他原因
             PassAway();
         }
         if (collision.gameObject.CompareTag("Player"))
         {
             health--;
-            if (health <= 0) PassAway();
+            if (health <= 0)
+            {
+                SetDestroyReason(DestroyReason.PlayerAttack); // 被玩家攻击
+                PassAway();
+            }
         }
     }
 
     public void PassAway()
     {
         onPassedAway?.Invoke(transform.position);
-        
+
         passAwayParticles.transform.parent = null;
         passAwayParticles.Play();
         Destroy(gameObject.transform.parent.gameObject);

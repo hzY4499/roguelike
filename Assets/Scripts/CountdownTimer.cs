@@ -5,6 +5,7 @@ using TMPro;
 public class CountdownTimer : MonoBehaviour
 {
     [SerializeField] private float totalTime = 300f; // 5分钟 = 300秒
+    [SerializeField] private GameManager gameManager;
     public TMP_Text timerText; // 用于显示倒计时的UI文本
     private float currentTime;
     private bool isTimerRunning = true;
@@ -42,15 +43,7 @@ public class CountdownTimer : MonoBehaviour
 
     private void OnTimerEnd()
     {
-        Debug.Log("倒计时结束，游戏结算！");
         // 在这里调用游戏结算逻辑
-        GameOver();
-    }
-
-    private void GameOver()
-    {
-        // 例如：显示结算界面、停止游戏等
-        // 你可以在这里添加你的游戏结算逻辑
-        Debug.Log("游戏结束，进行结算！");
+        gameManager.GameOver();
     }
 }
