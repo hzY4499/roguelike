@@ -583,7 +583,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1679726277
-  m_SortingLayer: -1
+  m_SortingLayer: -2
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -4895,6 +4895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   expBallPerfab: {fileID: 6500994916151232146, guid: e24e28cc2c98ea645bf0bbdd8499680d, type: 3}
   healDropsPerfab: {fileID: 9106796112335550457, guid: 368c504c048ad104d87eb007cba97987, type: 3}
+  boomDropsPerfab: {fileID: 5054590662212994514, guid: 320cf9419f80a6b419a239734a33e83b, type: 3}
 --- !u!1 &1266308867
 GameObject:
   m_ObjectHideFlags: 0
