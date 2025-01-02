@@ -25,9 +25,10 @@ public class EnemyControl : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 60f)
+        if (timer >= 30f)
         {
             maxNum++;
+            spawnInterval -= 0.2f;
             timer = 0f;
         }
         if (FindAnyObjectByType<GameManager>().isOver) StopAllCoroutines();
