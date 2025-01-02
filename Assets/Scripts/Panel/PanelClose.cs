@@ -5,12 +5,13 @@ using UnityEngine.UI; // Required for button interaction
 
 public class PanelClose : MonoBehaviour
 {
-    public GameObject panel; // The panel that will be hidden
+    private GameObject panel; // The panel that will be hidden
     public Button closeButton; // The button that will close the panel
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
+        panel = GameObject.FindGameObjectWithTag("Upgrade Panel");
         // Ensure the button is assigned and attach an event listener to it
         if (closeButton != null)
         {
@@ -19,7 +20,7 @@ public class PanelClose : MonoBehaviour
     }
 
     // Method to hide the panel when called
-    void ClosePanel()
+    protected virtual void ClosePanel()
     {
         if (panel != null)
         {

@@ -7,7 +7,7 @@ TagManager:
   - Wall
   - Bullet
   - Enemy
-  - Enemy_0
+  - Upgrade Panel
   layers:
   - Default
   - TransparentFX

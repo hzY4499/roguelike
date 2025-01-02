@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private int damage;
+    [SerializeField] private float damage;
     [SerializeField] private float aliveTime;
     private Player player;
     // Start is called before the first frame update
@@ -17,9 +17,13 @@ public class Bullet : MonoBehaviour
         
     }
 
-    public void SetDamage(int newDamage)
+    public void SetDamage(float newDamage)
     {
         damage = newDamage;
+    }
+    public void SetAliveTime(float newAliveTime)
+    {
+        aliveTime = newAliveTime;
     }
 
     // Update is called once per frame
@@ -50,7 +54,7 @@ public class Bullet : MonoBehaviour
     {
         isCriticalHit = false;
 
-        if (player == null) return damage;
+        if (player == null) return (int)damage;
 
         if (Random.Range(0,101) <= player.criticalRate)
         {
@@ -58,6 +62,6 @@ public class Bullet : MonoBehaviour
             return (int)(damage * player.criticalDamage);
         }
 
-        return damage;
+        return (int)damage;
     }
 }

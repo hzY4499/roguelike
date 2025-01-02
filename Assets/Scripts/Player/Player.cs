@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private float moveSpeed;  // 玩家移动速度
-    [SerializeField] private bool isShooting;  // 玩家射击状态
+    public float moveSpeed = 3f;  // 玩家移动速度
+    private bool isShooting;  // 玩家射击状态
     [SerializeField] private bool autoAtacking;// 是否自动射击
     private bool autoShoot;
     private Transform enemy;
 
     private float ShootTimer;
-    [SerializeField] private float ShootDelay = 0.1f; // 开火速率
+    public float ShootDelay = 0.2f; // 开火速率
     public int criticalRate = 10; // 暴击率（百分比）
     public float criticalDamage = 1.6f; // 暴击伤害（百分比）
     public GameObject Bullet;     // 子弹对象
-    public float BulletSpeed;     // 子弹速度
-    public int Bulletdamage;
+    public float BulletSpeed = 10f;     // 子弹速度
+    public float BulletDamage = 3f;
+    public float BulletAliveTime = 0.5f;
+    public float BulletSize = 1f;
+    public int BulletCount = 3;
+    public float spreadAngle = 10f;
 
     private PlayerRotation playerRotation;
     private Rigidbody2D rb;
@@ -119,22 +123,23 @@ public class Player : MonoBehaviour
 
             ShootTimer = 0;
 
-            // 散射角度间隔
-            float spreadAngle = 10f; // 每颗子弹之间的角度间隔
-
-            // 生成三颗子弹
-            for (int i = -1; i <= 1; i++)
+            for (int i = 0; i < BulletCount; i++)
             {
-                float m_fireAngle = baseFireAngle + i * spreadAngle;
+                // 计算当前子弹的发射角度
+                float m_fireAngle = baseFireAngle + (i - (BulletCount - 1) / 2f) * spreadAngle;
 
+                // 生成子弹
                 GameObject m_bullet = Instantiate(Bullet, transform.position, Quaternion.identity) as GameObject;
-                m_bullet.GetComponent<Bullet>().SetDamage(Bulletdamage);
+                m_bullet.GetComponent<Bullet>().SetDamage(BulletDamage);
+                m_bullet.GetComponent<Bullet>().SetAliveTime(BulletAliveTime);
+                m_bullet.transform.localScale *= BulletSize;
                 m_bullet.transform.parent = transform;
 
                 // 计算子弹方向
                 Vector3 shootDirection = Quaternion.Euler(0, 0, m_fireAngle) * Vector2.up;
                 m_bullet.GetComponent<Rigidbody2D>().velocity = shootDirection * BulletSpeed;
 
+                // 设置子弹旋转角度
                 m_bullet.transform.eulerAngles = new Vector3(0, 0, m_fireAngle);
             }
         }

@@ -4,16 +4,19 @@ using UnityEngine.UI; // 引入UI命名空间
 
 public class PlayerHealth : MonoBehaviour
 {
-    [SerializeField] public float maxHealth; // 最大生命值
+    public float maxHealth; // 最大生命值
     public float currentHealth; // 当前生命值
     public Slider healthSlider; // 生命条Slider组件
     [SerializeField] private TextMeshProUGUI healthText;
     [SerializeField] private ParticleSystem passAwayParticles;
 
+    public float recoveryTimes = 1f;
+
     [SerializeField] private Animator animator;
     [SerializeField] private GameManager gameManager;
     void Start()
     {
+        maxHealth = 30f;
         currentHealth = maxHealth; // 初始化生命值
         if (healthSlider != null)
         {
@@ -27,6 +30,7 @@ public class PlayerHealth : MonoBehaviour
         // 更新生命条
         if (healthSlider != null)
         {
+            healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
         }
     }
@@ -46,7 +50,7 @@ public class PlayerHealth : MonoBehaviour
     // 回复血量
     public void Recovery(float recoveryHealth)
     {
-        currentHealth += recoveryHealth;
+        currentHealth += recoveryHealth * recoveryTimes;
         if (currentHealth >= maxHealth) currentHealth = maxHealth;
         healthText.text = currentHealth.ToString();
     }
