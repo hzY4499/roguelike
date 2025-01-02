@@ -60,7 +60,7 @@ public class DropManager : MonoBehaviour
 
     private void EnemyPassedAwayCallback(Vector2 enemyPosition)
     {
-        bool shouldSpawnDrops = Random.Range(0, 101) <= 100;
+        bool shouldSpawnDrops = Random.Range(0, 101) <= 20;
         DropItems drops;
         if (shouldSpawnDrops)
         {
@@ -85,7 +85,7 @@ public class DropManager : MonoBehaviour
     private void ReleaseBoomDrops(BoomDrops boomDrops)
     {
         boomDrops.boomRenderer.enabled = false;
-        LeanTween.scale(boomDrops.boomCollider, Vector3.one, 1f)
+        LeanTween.scale(boomDrops.boomCollider, 2 * Vector3.one, 1f)
                 .setOnComplete(() =>
                 {
                     // ÖØÖÃËõ·Å

@@ -18,9 +18,9 @@ public class BoomCollider : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && collision.GetComponent<Renderer>().enabled) // 确保敌人生成特效不会触发
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyCollider>().PassAway();
         }
     }
 }

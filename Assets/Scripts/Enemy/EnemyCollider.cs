@@ -54,7 +54,7 @@ public class EnemyCollider : MonoBehaviour
         }
     }
 
-    private void PassAway()
+    public void PassAway()
     {
         onPassedAway?.Invoke(transform.position);
         

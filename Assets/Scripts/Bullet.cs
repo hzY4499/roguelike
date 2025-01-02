@@ -8,9 +8,13 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float aliveTime;
     private Player player;
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         player = FindFirstObjectByType<Player>();
+    }
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
@@ -39,6 +43,8 @@ public class Bullet : MonoBehaviour
     private int GetDamage(out bool isCriticalHit)
     {
         isCriticalHit = false;
+
+        if (player == null) return damage;
 
         if (Random.Range(0,101) <= player.criticalRate)
         {

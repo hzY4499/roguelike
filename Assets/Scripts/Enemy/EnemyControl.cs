@@ -30,9 +30,9 @@ public class EnemyControl : MonoBehaviour
         {
             // 等待指定时间
             yield return new WaitForSeconds(spawnInterval);
-            int randomIndex = Random.Range(0, enemyPrefabs.Length);
+            int randomCount = Random.Range(0, 6);
             // 生成敌人
-            Instantiate(enemyPrefabs[randomIndex], transform);
+            while (randomCount-- >= 0) Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], transform);
         }
     }
 }
