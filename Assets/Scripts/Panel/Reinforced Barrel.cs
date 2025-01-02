@@ -9,26 +9,17 @@ public class ReinforcedBarrel : MonoBehaviour
     public Transform upgradeButtonContainer; // 升级按钮容器的引用
     public List<Button> allButtons = new List<Button>(); // 存储所有按钮的列表
 
+    private List<Button> selectedButtons = new List<Button>(); // 存储选中的按钮
+
     void Start()
     {
-        // 假设这里有条件判断，当条件满足时，显示升级面板并随机选择按钮
-        if (levelUpPanel.activeSelf)
-        {
-            // 暂停游戏，设置时间缩放为0
-            Time.timeScale = 0f;
-
-            // 随机选择3个按钮并放入容器
-            RandomlySelectButtons();
-        }
-        // 不再需要在Start中查找按钮，假设按钮已经被拖拽进来
     }
 
     void Update()
     {
-
     }
 
-    void RandomlySelectButtons()
+    public void RandomlySelectButtons()
     {
         // 确保容器内至少有3个按钮
         if (allButtons.Count < 3)
@@ -37,8 +28,8 @@ public class ReinforcedBarrel : MonoBehaviour
             return;
         }
 
-        // 创建一个新的列表来存储选中的按钮
-        List<Button> selectedButtons = new List<Button>();
+        // 清空之前选中的按钮
+        selectedButtons.Clear();
 
         // 用来存储随机选择的按钮索引，防止重复选择
         List<int> selectedIndices = new List<int>();

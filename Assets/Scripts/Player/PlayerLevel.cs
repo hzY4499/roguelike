@@ -13,6 +13,7 @@ public class PlayerLevel : MonoBehaviour
     //public TMP_Text xpText;       // 使用 TMP_Text 而不是 Text
     public Slider xpSlider;       // 添加一个Slider来显示经验值的进度
     private GameManager gameManager;
+    private ReinforcedBarrel reinforcedBarrel;
 
     // 每个等级所需的经验值
     private int[] xpRequiredForLevel = new int[] { 0, 10, 20, 25, 30, 45, 50, 55, 60, 65, 70 };
@@ -25,6 +26,7 @@ public class PlayerLevel : MonoBehaviour
     void Start()
     {
         gameManager = FindFirstObjectByType<GameManager>();
+        reinforcedBarrel = FindFirstObjectByType<ReinforcedBarrel>();
         // 隐藏升级面板
         levelUpPanel.SetActive(false);
         UpdateUI();  // 初始更新UI
@@ -56,6 +58,8 @@ public class PlayerLevel : MonoBehaviour
 
         if (currentXP >= xpRequiredForLevel[index])
         {
+            reinforcedBarrel.RandomlySelectButtons();
+            
             // 升级
             currentLevel++;
             gameManager.currentScore += 100;
