@@ -6,11 +6,14 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float damage;
     [SerializeField] private float aliveTime;
+    [SerializeField] private AudioClip hitSound;  // 播放的音效文件
     private Player player;
+    private AudioSource audioSource;  // 用于播放音效的AudioSource
     // Start is called before the first frame update
     private void Awake()
     {
         player = FindFirstObjectByType<Player>();
+        audioSource = GetComponent<AudioSource>();  // 获取当前子弹的AudioSource组件
     }
     void Start()
     {
@@ -40,10 +43,15 @@ public class Bullet : MonoBehaviour
         {
             // 销毁子弹
             Destroy(gameObject);
-        }
+        }//与敌人碰撞
         if (collision.gameObject.CompareTag("Enemy") && collision.GetComponent<Renderer>().enabled) // 确保敌人生成特效不会触发
         {
             Destroy(gameObject);
+            // 播放击中敌人的音效
+            if (hitSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(hitSound);
+            }
             int curDamage = GetDamage(out bool isCriticalHit);
             collision.gameObject.GetComponent<EnemyCollider>().SetDestroyReason(EnemyCollider.DestroyReason.PlayerAttack);
             collision.gameObject.GetComponent<EnemyCollider>().TakeDamage(curDamage, isCriticalHit);
