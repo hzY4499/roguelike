@@ -215,6 +215,7 @@ MonoBehaviour:
   criticalDamage: 1.6
   Bullet: {fileID: 1657736296376420674, guid: 08019878646dc484a9381bc644669546, type: 3}
   BulletSpeed: 10
+  Bulletdamage: 3
 --- !u!50 &6526327696009031904
 Rigidbody2D:
   serializedVersion: 4

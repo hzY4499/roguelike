@@ -15,7 +15,7 @@ public class fightingwindowload : MonoBehaviour
     }
     void LoadScene()
     {
-        SceneManager.LoadScene("fightingwindow"); // 这里的SceneB是目标场景的名称，要与构建设置中的场景名称一致
+        SceneManager.LoadScene("fightingwindow");
     }
 
     // Update is called once per frame

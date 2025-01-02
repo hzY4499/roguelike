@@ -17,6 +17,11 @@ public class Bullet : MonoBehaviour
         
     }
 
+    public void SetDamage(int newDamage)
+    {
+        damage = newDamage;
+    }
+
     // Update is called once per frame
     void Update()
     {

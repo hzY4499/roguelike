@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     public float criticalDamage = 1.6f; // 暴击伤害（百分比）
     public GameObject Bullet;     // 子弹对象
     public float BulletSpeed;     // 子弹速度
+    public int Bulletdamage;
 
     private PlayerRotation playerRotation;
     private Rigidbody2D rb;
@@ -32,6 +33,12 @@ public class Player : MonoBehaviour
     {   
         PlayerMove();
 
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            autoAtacking = !autoAtacking;
+            autoShoot = autoAtacking;
+        }
+        
         // 非自动射击情况下，更新射击状态
         if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(0))
         {
@@ -121,6 +128,7 @@ public class Player : MonoBehaviour
                 float m_fireAngle = baseFireAngle + i * spreadAngle;
 
                 GameObject m_bullet = Instantiate(Bullet, transform.position, Quaternion.identity) as GameObject;
+                m_bullet.GetComponent<Bullet>().SetDamage(Bulletdamage);
                 m_bullet.transform.parent = transform;
 
                 // 计算子弹方向

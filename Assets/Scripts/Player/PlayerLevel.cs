@@ -7,6 +7,7 @@ using UnityEngine.UI;  // 引入 Slider 所需的命名空间
 public class PlayerLevel : MonoBehaviour
 {
     public int currentLevel = 0;  // 当前等级
+    private int index = 0;
     private int currentXP = 0;     // 当前经验值
     public TMP_Text levelText;    // 使用 TMP_Text 而不是 Text
     //public TMP_Text xpText;       // 使用 TMP_Text 而不是 Text
@@ -51,8 +52,9 @@ public class PlayerLevel : MonoBehaviour
     // 检查是否达到升级条件
     private void CheckLevelUp()
     {
-        // 确保不会超过最大等级
-        if (currentLevel < xpRequiredForLevel.Length - 1 && currentXP >= xpRequiredForLevel[currentLevel])
+        index = currentLevel < xpRequiredForLevel.Length ? currentLevel : xpRequiredForLevel.Length - 1;
+
+        if (currentXP >= xpRequiredForLevel[index])
         {
             // 升级
             currentLevel++;

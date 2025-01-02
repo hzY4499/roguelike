@@ -8,7 +8,6 @@ public class CountdownTimer : MonoBehaviour
     [SerializeField] private GameManager gameManager;
     public TMP_Text timerText; // 用于显示倒计时的UI文本
     private float currentTime;
-    private bool isTimerRunning = true;
 
     void Start()
     {
@@ -18,13 +17,12 @@ public class CountdownTimer : MonoBehaviour
 
     void Update()
     {
-        if (isTimerRunning)
+        if (!gameManager.isOver)
         {
             currentTime -= Time.deltaTime;
             if (currentTime <= 0)
             {
                 currentTime = 0;
-                isTimerRunning = false;
                 OnTimerEnd();
             }
             UpdateTimerDisplay();
