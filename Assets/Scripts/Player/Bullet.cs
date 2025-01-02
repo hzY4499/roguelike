@@ -46,12 +46,13 @@ public class Bullet : MonoBehaviour
         }//与敌人碰撞
         if (collision.gameObject.CompareTag("Enemy") && collision.GetComponent<Renderer>().enabled) // 确保敌人生成特效不会触发
         {
-            Destroy(gameObject);
-            // 播放击中敌人的音效
+            audioSource.transform.parent = null;
             if (hitSound != null && audioSource != null)
             {
                 audioSource.PlayOneShot(hitSound);
             }
+            Destroy(gameObject);
+
             int curDamage = GetDamage(out bool isCriticalHit);
             collision.gameObject.GetComponent<EnemyCollider>().SetDestroyReason(EnemyCollider.DestroyReason.PlayerAttack);
             collision.gameObject.GetComponent<EnemyCollider>().TakeDamage(curDamage, isCriticalHit);

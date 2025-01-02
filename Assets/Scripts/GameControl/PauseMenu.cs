@@ -46,6 +46,7 @@ public class PauseMenu : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0; // 暂停游戏时间
+        gameManager.PauseMusic();
         pausePanel.SetActive(true); // 显示暂停页面
     }
 

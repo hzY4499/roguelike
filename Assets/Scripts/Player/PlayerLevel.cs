@@ -80,7 +80,7 @@ public class PlayerLevel : MonoBehaviour
 
         // 更新 Slider 进度
         // 计算经验进度，范围从 0 到 1
-        float xpProgress = (float)currentXP / xpRequiredForLevel[currentLevel];
+        float xpProgress = (float)currentXP / xpRequiredForLevel[index];
         xpSlider.value = xpProgress;  // 更新 Slider 的值
     }
     // 显示等级提升的面板

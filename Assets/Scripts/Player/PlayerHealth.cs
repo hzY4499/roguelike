@@ -20,8 +20,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth; // 初始化生命值
         if (healthSlider != null)
         {
-            healthSlider.maxValue = maxHealth; // 设置生命条的最大值
-            healthSlider.value = currentHealth; // 设置当前生命条的值
+            healthSlider.maxValue = (int) maxHealth; // 设置生命条的最大值
+            healthSlider.value = (int) currentHealth; // 设置当前生命条的值
             healthText.text = currentHealth.ToString();
         }
     }
