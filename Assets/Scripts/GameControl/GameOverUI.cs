@@ -8,6 +8,7 @@ public class GameOverUI : MonoBehaviour
     //[Header("UI Elements")]
     [SerializeField] private TMP_Text currentScoreText; // 当前分数文本
     [SerializeField] private TMP_Text highScoreText;    // 历史最高分文本
+    [SerializeField] private TMP_Text winText;
     [SerializeField] private Button restartButton;      // 重新开始按钮
     [SerializeField] private Button mainMenuButton;     // 返回主菜单按钮
 
@@ -21,11 +22,11 @@ public class GameOverUI : MonoBehaviour
         mainMenuButton.onClick.AddListener(ReturnToMainMenu);
     }
 
-    public void Show(int score)
+    public void Show(int score, bool win)
     {
         currentScore = score;
         UpdateHighScore(); // 更新历史最高分
-        UpdateUI();        // 更新 UI 显示
+        UpdateUI(win);        // 更新 UI 显示
         gameObject.SetActive(true); // 显示结算界面
     }
 
@@ -42,8 +43,10 @@ public class GameOverUI : MonoBehaviour
         }
     }
 
-    private void UpdateUI()
+    private void UpdateUI(bool win)
     {
+        if (win) winText.SetText("恭喜你，获得胜利！");
+        else winText.SetText("");
         currentScoreText.text = "当前分数: " + currentScore;
         highScoreText.text = "历史最高分: " + highScore;
     }

@@ -208,14 +208,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 3
-  isShooting: 0
-  autoAtacking: 1
+  autoAtacking: 0
   ShootDelay: 0.2
   criticalRate: 10
   criticalDamage: 1.6
   Bullet: {fileID: 1657736296376420674, guid: 08019878646dc484a9381bc644669546, type: 3}
   BulletSpeed: 10
-  Bulletdamage: 3
+  BulletDamage: 3
+  BulletAliveTime: 0.5
+  BulletSize: 1
+  BulletCount: 3
+  spreadAngle: 10
 --- !u!50 &6526327696009031904
 Rigidbody2D:
   serializedVersion: 4
@@ -296,6 +299,7 @@ MonoBehaviour:
   healthSlider: {fileID: 0}
   healthText: {fileID: 0}
   passAwayParticles: {fileID: 4486680971084276210}
+  recoveryTimes: 1
   animator: {fileID: -1867446690608213766}
   gameManager: {fileID: 0}
 --- !u!114 &1048900947446140198

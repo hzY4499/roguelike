@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "当前分数：" + currentScore;
     }
 
-    public void GameOver()
+    public void GameOver(bool win)
     {
         isOver = true;
 
@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
 
         // 启动销毁敌人的协程
         StartCoroutine(DestroyEnemiesWithDelay());
-        gameOverUI.Show(currentScore);
+        gameOverUI.Show(currentScore, win);
     }
 
     private IEnumerator DestroyEnemiesWithDelay()

@@ -62,7 +62,7 @@ public class PlayerHealth : MonoBehaviour
         passAwayParticles.transform.parent = null;
         passAwayParticles.Play();
         Destroy(gameObject);
-        gameManager.GameOver();
+        gameManager.GameOver(false);
         //gameObject.SetActive(false);
     }
     // 检测与Enemy_0的碰撞并消失

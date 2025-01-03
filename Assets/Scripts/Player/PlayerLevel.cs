@@ -54,7 +54,8 @@ public class PlayerLevel : MonoBehaviour
     // 检查是否达到升级条件
     private void CheckLevelUp()
     {
-        index = currentLevel < xpRequiredForLevel.Length ? currentLevel : xpRequiredForLevel.Length - 1;
+        if (currentLevel < xpRequiredForLevel.Length) index = currentLevel;
+        else xpRequiredForLevel[index] += 70;
 
         if (currentXP >= xpRequiredForLevel[index])
         {

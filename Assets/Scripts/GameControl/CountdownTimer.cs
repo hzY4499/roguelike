@@ -35,13 +35,13 @@ public class CountdownTimer : MonoBehaviour
         {
             int minutes = Mathf.FloorToInt(currentTime / 60);
             int seconds = Mathf.FloorToInt(currentTime % 60);
-            timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+            timerText.text = "倒计时：" + string.Format("{0:00}:{1:00}", minutes, seconds);
         }
     }
 
     private void OnTimerEnd()
     {
         // 在这里调用游戏结算逻辑
-        gameManager.GameOver();
+        gameManager.GameOver(true);
     }
 }
