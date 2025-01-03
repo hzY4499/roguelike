@@ -71,18 +71,26 @@ public class PlayerLevel : MonoBehaviour
         }
     }
 
-    // 更新UI显示
     private void UpdateUI()
     {
-        // 显示当前等级和经验
+        // 显示当前等级
         levelText.text = "lvl  " + currentLevel;
-        //xpText.text = "XP: " + currentXP + "/" + xpRequiredForLevel[currentLevel];
 
-        // 更新 Slider 进度
+        // 设置 Slider 的最大值
+        xpSlider.maxValue = xpRequiredForLevel[index];
+
         // 计算经验进度，范围从 0 到 1
-        float xpProgress = (float)currentXP / xpRequiredForLevel[index];
-        xpSlider.value = xpProgress;  // 更新 Slider 的值
+        if (xpRequiredForLevel[index] == 0)
+        {
+            xpSlider.value = 0;
+        }
+        else
+        {
+            float xpProgress = (float)currentXP;// / xpRequiredForLevel[index];
+            xpSlider.value = xpProgress;  // 更新 Slider 的值
+        }
     }
+
     // 显示等级提升的面板
     private void ShowLevelUpPanel()
     {
