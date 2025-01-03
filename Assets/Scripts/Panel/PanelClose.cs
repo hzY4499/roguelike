@@ -8,9 +8,12 @@ public class PanelClose : MonoBehaviour
     private GameObject panel; // The panel that will be hidden
     public Button closeButton; // The button that will close the panel
 
+    private PlayerLevel playerLevel;
+
     // Start is called before the first frame update
     protected void Start()
     {
+        playerLevel = FindFirstObjectByType<PlayerLevel>();
         panel = GameObject.FindGameObjectWithTag("Upgrade Panel");
         // Ensure the button is assigned and attach an event listener to it
         if (closeButton != null)
@@ -26,6 +29,7 @@ public class PanelClose : MonoBehaviour
         {
             panel.SetActive(false); // Disable the panel to make it disappear
             Time.timeScale = 1f;
+            playerLevel.isPausedByUpgrade = false;
         }
     }
 }

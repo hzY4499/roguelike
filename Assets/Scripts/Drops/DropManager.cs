@@ -38,19 +38,28 @@ public class DropManager : MonoBehaviour
     }
 
     private ExpBall ExpBallCreateFunction() => Instantiate(expBallPerfab, transform);
-    private void ExpBallActionOnGet(ExpBall expBall) => expBall.gameObject.SetActive(true);
-    private void ExpBallActionOnRelease(ExpBall expBall) => expBall.gameObject.SetActive(false);
-    private void ExpBallActionOnDestroy(ExpBall expBall) => Destroy(expBall.gameObject);
+    private void ExpBallActionOnGet(ExpBall expBall) => expBall?.gameObject.SetActive(true);
+    private void ExpBallActionOnRelease(ExpBall expBall) => expBall?.gameObject.SetActive(false);
+    private void ExpBallActionOnDestroy(ExpBall expBall)
+    {
+        if (expBall != null) Destroy(expBall.gameObject);
+    }
     
     private HealDrops HealDropsCreateFunction() => Instantiate(healDropsPerfab, transform);
-    private void HealDropsActionOnGet(HealDrops healDrops) => healDrops.gameObject.SetActive(true);
-    private void HealDropsActionOnRelease(HealDrops healDrops) => healDrops.gameObject.SetActive(false);
-    private void HealDropsActionOnDestroy(HealDrops healDrops) => Destroy(healDrops.gameObject);
+    private void HealDropsActionOnGet(HealDrops healDrops) => healDrops?.gameObject.SetActive(true);
+    private void HealDropsActionOnRelease(HealDrops healDrops) => healDrops?.gameObject.SetActive(false);
+    private void HealDropsActionOnDestroy(HealDrops healDrops)
+    {
+        if (healDrops != null) Destroy(healDrops.gameObject);
+    }
 
     private BoomDrops BoomDropsCreateFunction() => Instantiate(boomDropsPerfab, transform);
-    private void BoomDropsActionOnGet(BoomDrops boomDrops) => boomDrops.gameObject.SetActive(true);
-    private void BoomDropsActionOnRelease(BoomDrops boomDrops) => boomDrops.gameObject.SetActive(false);
-    private void BoomDropsActionOnDestroy(BoomDrops boomDrops) => Destroy(boomDrops.gameObject);
+    private void BoomDropsActionOnGet(BoomDrops boomDrops) => boomDrops?.gameObject.SetActive(true);
+    private void BoomDropsActionOnRelease(BoomDrops boomDrops) => boomDrops?.gameObject.SetActive(false);
+    private void BoomDropsActionOnDestroy(BoomDrops boomDrops)
+    {
+        if (boomDrops != null) Destroy(boomDrops.gameObject);
+    }
 
     // Update is called once per frame
     void Update()
@@ -60,7 +69,7 @@ public class DropManager : MonoBehaviour
 
     private void EnemyPassedAwayCallback(Vector2 enemyPosition)
     {
-        bool shouldSpawnDrops = Random.Range(0, 101) <= 20;
+        bool shouldSpawnDrops = Random.Range(0, 101) <= 10;
         DropItems drops;
         if (shouldSpawnDrops)
         {
@@ -76,8 +85,11 @@ public class DropManager : MonoBehaviour
                     break;
             }
         }
-        drops = expBallPool.Get();
-        drops.transform.position = enemyPosition;
+        else
+        {
+            drops = expBallPool.Get();
+            drops.transform.position = enemyPosition;
+        }
     }
 
     private void ReleaseExpBall(ExpBall expBall) => expBallPool.Release(expBall);

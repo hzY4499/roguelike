@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
 
     private bool isPaused = false;
     private GameManager gameManager;
+    private PlayerLevel playerLevel;
 
     private void Start()
     {
@@ -20,6 +21,7 @@ public class PauseMenu : MonoBehaviour
         mainMenuButton.onClick.AddListener(ReturnToMainMenu);
 
         gameManager = FindFirstObjectByType<GameManager>();
+        playerLevel = FindFirstObjectByType<PlayerLevel>();
 
         // 初始化暂停页面为隐藏
         pausePanel.SetActive(false);
@@ -28,7 +30,7 @@ public class PauseMenu : MonoBehaviour
     private void Update()
     {
         // 检测 ESC 键按下
-        if (!gameManager.isOver && Input.GetKeyDown(KeyCode.Escape))
+        if (!gameManager.isOver && !playerLevel.isPausedByUpgrade && Input.GetKeyDown(KeyCode.Escape))
         {
             if (isPaused)
             {

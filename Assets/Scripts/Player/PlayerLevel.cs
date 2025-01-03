@@ -14,9 +14,10 @@ public class PlayerLevel : MonoBehaviour
     public Slider xpSlider;       // 添加一个Slider来显示经验值的进度
     private GameManager gameManager;
     private ReinforcedBarrel reinforcedBarrel;
+    public bool isPausedByUpgrade;
 
     // 每个等级所需的经验值
-    private int[] xpRequiredForLevel = new int[] { 0, 10, 20, 25, 30, 45, 50, 55, 60, 65, 70 };
+    private int[] xpRequiredForLevel = new int[] { 0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 60, 70, 80, 90, 100, 120, 140, 160, 180, 200, 230, 260, 290, 330, 360, 390, 430, 470, 510, 550};
 
     // 每击杀一个敌人，玩家获得的经验
     private int xpPerBall = 1;
@@ -54,10 +55,7 @@ public class PlayerLevel : MonoBehaviour
     // 检查是否达到升级条件
     private void CheckLevelUp()
     {
-        if (currentLevel < xpRequiredForLevel.Length) index = currentLevel;
-        else xpRequiredForLevel[index] += 70;
-
-        if (currentXP >= xpRequiredForLevel[index])
+        if (currentLevel < xpRequiredForLevel.Length && currentXP >= xpRequiredForLevel[currentLevel])
         {
             reinforcedBarrel.RandomlySelectButtons();
             
@@ -66,6 +64,7 @@ public class PlayerLevel : MonoBehaviour
             gameManager.currentScore += 100;
             // 显示升级面板
             levelUpPanel.SetActive(true);
+            isPausedByUpgrade = true;
             Time.timeScale = 0f;
             // 重置经验为0
             currentXP = 0;
@@ -78,10 +77,10 @@ public class PlayerLevel : MonoBehaviour
         levelText.text = "lvl  " + currentLevel;
 
         // 设置 Slider 的最大值
-        xpSlider.maxValue = xpRequiredForLevel[index];
+        xpSlider.maxValue = xpRequiredForLevel[currentLevel];
 
         // 计算经验进度，范围从 0 到 1
-        if (xpRequiredForLevel[index] == 0)
+        if (xpRequiredForLevel[currentLevel] == 0)
         {
             xpSlider.value = 0;
         }

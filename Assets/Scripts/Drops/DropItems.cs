@@ -5,6 +5,13 @@ using UnityEngine;
 public abstract class DropItems : MonoBehaviour, ICollectable
 {
     protected bool collected;
+    protected float lifeTime = 10f;
+
+    protected void Update()
+    {
+        lifeTime -= Time.deltaTime;
+        if (lifeTime <= 0) gameObject.SetActive(false);
+    }
 
     private void OnEnable()
     {

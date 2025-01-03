@@ -20,8 +20,8 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = maxHealth; // 初始化生命值
         if (healthSlider != null)
         {
-            healthSlider.maxValue = (int) maxHealth; // 设置生命条的最大值
-            healthSlider.value = (int) currentHealth; // 设置当前生命条的值
+            healthSlider.maxValue = maxHealth; // 设置生命条的最大值
+            healthSlider.value = currentHealth; // 设置当前生命条的值
             healthText.text = currentHealth.ToString();
         }
     }
@@ -32,6 +32,7 @@ public class PlayerHealth : MonoBehaviour
         {
             healthSlider.maxValue = maxHealth;
             healthSlider.value = currentHealth;
+            healthText.text = ((int) currentHealth).ToString();
         }
     }
     // 受到伤害
@@ -39,7 +40,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth -= damage; // 生命值减少
         animator.Play("GetDamage");
-        healthText.text = currentHealth.ToString();
+        healthText.text = ((int) currentHealth).ToString();
         // 这里可以添加死亡逻辑
         if (currentHealth <= 0f)
         {
@@ -52,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealth += recoveryHealth * recoveryTimes;
         if (currentHealth >= maxHealth) currentHealth = maxHealth;
-        healthText.text = currentHealth.ToString();
+        healthText.text = ((int)currentHealth).ToString();
     }
     // 死亡处理
     void Die()
@@ -63,7 +64,6 @@ public class PlayerHealth : MonoBehaviour
         passAwayParticles.Play();
         Destroy(gameObject);
         gameManager.GameOver(false);
-        //gameObject.SetActive(false);
     }
     // 检测与Enemy_0的碰撞并消失
     private void OnCollisionEnter2D(Collision2D collision)

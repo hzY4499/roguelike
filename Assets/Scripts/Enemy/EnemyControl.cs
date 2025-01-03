@@ -25,7 +25,7 @@ public class EnemyControl : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
-        if (timer >= 30f)
+        if (timer >= 50f)
         {
             maxNum++;
             spawnInterval -= 0.2f;
